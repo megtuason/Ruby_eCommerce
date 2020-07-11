@@ -1,0 +1,67 @@
+<%= form_with(model: product_tag, local: true) do |form| %>
+  <% if product_tag.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product_tag.errors.count, "error") %> prohibited this product_tag from being saved:</h2>
+
+      <ul>
+      <% product_tag.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <center>
+    <div class="form-container">
+      <%= form.label :product_id %>
+      <%= form.number_field :product_id, class:'input-forms', min: "1", max:@products.count, :value => @product.product_id, :readonly => "readonly" %><br><br>
+
+      <%= form.label :tag_id %>
+      <%= form.number_field :tag_id, class:'input-quantity', max:@tags.count, min:0%><br><br>
+
+      <%= form.submit class:'btn' %>
+      <%= link_to 'Back', products_path, class:'btn' %>
+      <% end %>
+    </div>
+    <table id="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tag Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tags.each do |tag|%>
+        <tr>
+          <td><%= tag.tag_id%></td>
+          <td><%= tag.tag_name%></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table><br></center>
+
+    <br><br>
+
+<style type="text/css">
+  #table {
+    width: 40%; 
+    margin: 20px;
+  }
+
+  .table-container {
+    width: 70%;
+    margin: auto;
+  }
+
+  .input-quantity, .input-forms {
+    margin-left: 20px;
+  }
+
+  .form-container {
+    background-color: #F8F8F8;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    width: 30%;
+    padding: 15px;
+  }
+
+</style>

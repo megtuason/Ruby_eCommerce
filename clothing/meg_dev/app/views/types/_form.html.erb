@@ -1,0 +1,51 @@
+<%= form_with(model: type, local: true) do |form| %>
+  <% if type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(type.errors.count, "error") %> prohibited this type from being saved:</h2>
+
+      <ul>
+      <% type.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<center>
+
+  <div class="form-container">
+    <%= form.label :product_id %>
+    <%= form.number_field :product_id, class:'input-forms', :value => @product.product_id, :readonly => "readonly" %><br><br>
+
+    <%= form.label :type_color%>
+    <%= form.select :type_color, ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple', 'Pink', 'Brown', 'Gray', 'Black', 'White', 'Maroon'], class: 'input-forms' %><br><br>
+
+    <%= form.label :type_size %>
+    <%= form.select :type_size, ['S', 'M', 'L', 'XL'] %><br><br>
+
+    <%= form.label :type_quantity%>
+    <%= form.number_field :type_quantity, class:'input-quantity', min: "1", max:"255"%><br><br>
+
+    <%= form.file_field :image, accept: 'image/png,image/gif,image/jpeg' %><br><br>
+
+    <%= form.submit class:'btn' %><%= link_to 'Back', products_path, class:'btn' %>
+  </div><br><br></center>
+<% end %>
+
+<style type="text/css">
+    .form-container {
+    background-color: #F8F8F8;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    width: 40%;
+    padding: 15px;
+  }
+
+  .input-quantity, .input-forms, select {
+    margin-left: 20px;
+  }
+
+  .img {
+    margin-left: 20px;
+    width: 60%;
+  }
+</style>

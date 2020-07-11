@@ -1,0 +1,85 @@
+<%= form_with(model: order, local: true) do |form| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<center>
+  <table id="table" style="width: 50%;">
+    <tr>
+      <th>Customer Name</th>
+      <td><%= form.text_field :customer_name, maxlength:"40", class:'input-forms' %></td>
+    </tr>
+    <tr>
+      <th>House Address No.</th>
+      <td><%= form.text_field :customer_address, maxlength:"10", class:'input-forms', style:'width: 80px;'%></td>
+    </tr>
+    <tr>
+      <th>Street</th>
+      <td><%= form.text_field :street, maxlength:"40", class:'input-forms',  style:'width: 200px;' %></td>
+    </tr>
+    <tr>
+      <th>Province</th>
+      <td><%= form.select :province,['Abra', 'Agusan del Norte', 'Agusan del Sur', 'Aklan', 'Albay', 'Antique', 'Apayao', 'Aurora', 'Basilan', 'Bataan', 'Batanes', 'Batangas', 'Benguet', 'Biliran', 'Bohol', 'Bukidnon', 'Bulacan', 'Cagayan', 'Camarines Norte', 'Camarines Sur', 'Camiguin', 'Capiz', 'Catanduanes', 'Cavite', 'Cebu', 'Compostela Valley', 'Cotabato', 'Davao del Norte', 'Davao del Sur', 'Davao Occidental', 'Davao Oriental', 'Dinagat Islands', 'Eastern Samar', 'Guimaras', 'Ifugao', 'Ilocos Norte', 'Ilocos Sur', 'Iloilo', 'Isabela', 'Kalinga', 'La Union', 'Laguna', 'Lanao del Norte', 'Lanao del Sur', 'Leyte', 'Maguindanao', 'Marinduque', 'Masbate', 'Misamis Occidental', 'Mountain Province', 'Negros Occidental', 'Negros Oriental', 'Northern Samar', 'Nueva Ecija', 'Nueva Vizcaya', 'Occidental Mindoro', 'Oriental Mindoro', 'Palawan', 'Pampanga', 'Pangasinan', 'Quezon', 'Quirino', 'Rizal', 'Romblon', 'Samar', 'Sarangani', 'Siquijor', 'Sorsogon', 'South Cotabato', 'Southern Leyte', 'Sultan Kudarat', 'Sulu', 'Surigao del Norte', 'Surigao del Sur', 'Tarlac', 'Tawi-Tawi', 'Zambales', 'Zamboanga del Norte', 'Zamboanga del Sur', 'Zamboanga Sibugay', 'Metro Manila'] %></td>
+    </tr>
+    <tr>
+      <th>City</th>
+      <td><%= form.select :city,['Abucay', 'Agoncillo', 'Angeles City', 'Apalit', 'Bacolod City', 'Bacolor', 'Bacoor', 'Baguio City', 'Balagtas', 'Balanga', 'Balayan', 'Baliuag', 'Bamban', 'Baras', 'Batangas City', 'Bauan', 'Bay', 'Binan', 'Binangonan', 'Binmaley', 'Bocaue', 'Bugallon', 'Bustos', 'Cabanatuan City', 'Cabuyao', 'Cagayan De Oro City', 'Cainta', 'Calamba', 'Calauan', 'Calbayog City', 'Caloocan City', 'Calumpit', 'Camaligan', 'Canaman', 'Candelaria', 'Capas', 'Cardona', 'Carmona', 'Cauayan City', 'Cavite City', 'Cebu City', 'Compostela', 'Concepcion', 'Cosolacion', 'Cordova', 'Cotabato City', 'Dagupan City', 'Daraga', 'Dasmarinas', 'Dauis', 'Davao City', 'Dinalupihan', 'General Mariano Alvarez', 'General Santos City', 'General Trias', 'Gerona', 'Guiguinto', 'Guimba', 'Hagonoy', 'Hermosa', 'Iloilo City', 'Imus', 'Kawit', 'Laoag City', 'Lapu-lapu City', 'Las Pinas City', 'Legazpi City', 'Lemery', 'Liloan', 'Lingayen', 'Lipa City', 'Los Baños', 'Lucena City', 'Mabalacat', 'Makati City', 'Malabon City', 'Malolos City', 'Malvar', 'Mandaluyong City', 'Mandaue City', 'Manila City', 'Marikina City', 'Marilao', 'Mataas na Kahoy', 'Mexico', 'Meycauayan', 'Minalin', 'Minglanilla', 'Morong', 'Muntinlupa City', 'Naga City', 'NAIC', 'Navotas City', 'Noveleta', 'Olangapo City', 'Padre Garcia', 'Pagbilao', 'Pandi', 'Paniqui', 'Paombong', 'Parañaque City', 'Pasay City', 'Pasig City', 'Pateros', 'Pavia', 'Peñablanca', 'Pilar', 'Pililla', 'Plaridel', 'Porac', 'Puerto Princesa City', 'Pulilan', 'Quezon City', 'Rodriguez', 'Rosales', 'Rosario', 'Roxas City', 'San Fernando City', 'San J. Del Monte', 'San Juan City', 'San Luis', 'San Mateo', 'San Miguel', 'San Nicolas', 'San Pablo City', 'San Pascaul', 'San Pedro', 'San Rafael', 'San Simon', 'Santa Maria', 'Santa Rosa', 'San Teresita', 'Santo Tomas', 'Silang', 'Sta Cruz Laguna', 'Sultan Kudarat (Nuling)', 'Taal', 'Tacoloban City', 'Tagaytay City', 'Tabilaran City', 'Taguig City', 'Talisay City', 'Tanauan', 'Tanay', 'Tanza', 'Tarlac City', 'Taytay', 'Teresa', 'Trece Martires City', 'Tuguegarao City', 'Urdaneta City', 'Valenzuela City', 'Victoria', 'Villasis' , 'Zamboanga City'] %></td>
+    </tr>
+    <tr>
+      <th>Zip Code</th>
+      <td><%= form.number_field :zip, max:"9999", class:'input-forms', style:'width: 100px;' %></td>
+    </tr>
+    <tr>
+      <th>Contact Number</th>
+      <td><%= form.number_field :contact_number, class:'input-forms' %></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><%= form.text_field :email, maxlength:"50", class:'input-forms',  style:'width: 200px;'%></td>
+    </tr>
+
+    <tr>
+      <th>Payment Method</th>
+      <td><%= form.select :payment_method, ['Paypal', 'Cash on Delivery', 'Bank Deposit'] %></td>
+    </tr>
+    <% if admin_logged_in? %>
+    <tr>
+      <th>Order Status</th>
+      <td><%= form.select :order_status, ['Pending', 'Processed', 'Shipped', 'Delivered'] %></td>
+    </tr>
+    <% end %>
+    <tr>
+      <th></th>
+      <td><%= form.submit class:'btn' %><%= link_to 'Back', orders_path, class:'btn'%></td>
+    </tr>
+  </table>
+</center><% end %>
+
+<style type="text/css">
+  select {
+    width: 180px;
+  }
+  th {
+    width: 35%;
+  }
+
+  a {
+    text-decoration: underline;
+    color: #465e5e;
+  }
+
+  a:hover {
+    color: #7aa4a4;
+  }
+
+  .
+
+</style>

@@ -1,0 +1,44 @@
+<title>Show Type</title>
+<h1>Show selected type</h1>
+
+<center>
+	<table id="table" style="width: 30%;">
+		<tr>
+			<th>Photo</th>
+			<td><%= image_tag @type.image, :size => '150x150' if @type.image.attached? %></td>
+		</tr>
+		<tr>
+			<th>Type ID</th>
+			<td><%= @type.type_id %></td>
+		</tr>
+		<tr>
+			<th>Product ID</th>
+			<td><%= @type.product_id %></td>
+		</tr>
+		<% @products.each do |prod| %>
+			<% if prod.product_id == @type.product_id %>
+				<tr>
+					<th>Product Name</th>
+					<td><%= prod.product_name %></td>
+				</tr>
+			<% end %>
+		<% end %>
+		<tr>
+			<th>Color</th>
+			<td><%= @type.type_color%></td>
+		</tr>
+		<tr>
+			<th>Size</th>
+			<td><%= @type.type_size%></td>
+		</tr>
+		<tr>
+			<th>Quantity</th>
+			<td><%= @type.type_quantity%></td>
+		</tr>
+		<tr style="height: 60px">
+			<th></th>
+			<td><%= link_to 'Edit', edit_type_path(@type), class:'btn' %>
+				<%= link_to 'Back', types_path, class:'btn' %></td>
+		</tr>
+	</table><br><br>
+</center>

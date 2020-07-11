@@ -1,0 +1,28 @@
+<title>Show Tag</title>
+<h1>Tag ID: <%= @tag.tag_id %></h1>
+<center>
+	<table id="table" style="width: 30%;">
+			<th>Tag Name</th>
+			<td><%= @tag.tag_name %></td>
+		</tr>
+		<tr style="height: 60px">
+			<th></th>
+			<td><%= link_to 'Edit', edit_tag_path(@tag), class:'btn' %><%= link_to 'Back', tags_path, class: 'btn' %></td>
+		</tr>
+	</table>
+</center>
+<style type="text/css">
+	th {
+		width: 30%;
+	}
+
+  	a {
+  		text-decoration: underline;
+  		color: #465e5e;
+  	}
+
+  	a:hover {
+  		color: #7aa4a4;
+  	}
+</style>
+

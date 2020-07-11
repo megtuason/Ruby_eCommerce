@@ -1,0 +1,47 @@
+<nav class="nav-user">
+		<ul>
+				<li class="icons" style="padding-left: 2em;"><a href="https://www.facebook.com/megclothing/" class="fa fa-lg fa-facebook"></a></li>
+				<li class="icons" style="padding-left: 0em;"><a href="https://www.instagram.com/megclothing" class="fa fa-lg fa-instagram"></a></li>
+				<li class="left-links" id="home-link" style="padding-left: 2em;"><%= link_to "HOME", root_path %></li>
+		        <li class="left-links" style="padding-left: 2em;"><%= link_to "ABOUT", welcome_about_path %></li>    
+		        <li class="left-links"><%= link_to "CONTACT", welcome_contact_path %></li>
+		        <li class="left-links"><%= link_to "PRODUCTS", welcome_products_path %></li>
+		        <li class="right-links" style="float: right; padding-right: 3em;"><%= link_to "VIEW CART", welcome_cart_path %></li>
+	        	<li class="right-links" style="float: right;">
+	        		<%= form_tag(welcome_index_path, method: :get) do %>
+	        		<%= text_field_tag(:search, params[:search], class:'input-search', placeholder: 'Search') %>
+	        		<%= submit_tag (""), class:'search-btn' %>
+	        	<% end %></li>
+	        	<li>
+	        	<%= link_to root_path do %>
+	        		<li id="home-icon" class="fa fa-lg fa-home" style="float: right;">
+	        	<% end %>
+	        	</li> 
+		</ul>
+</nav>
+<header class="header-user" style="background-color: white;"><center>
+	<%= link_to root_path do %>
+		<%= image_tag 'http://i65.tinypic.com/egaijn.png', class:'logo' %>
+	<% end %>
+	<nav class="nav-category">
+			<ul>
+	          	<li><%= link_to "TOPS", welcome_products_tops_path %></li>
+	          	<li><%= link_to "BOTTOMS", welcome_products_bottoms_path %></li>
+	          	<li><%= link_to "DRESSES", welcome_products_dresses_path %></li>
+	          	<li><%= link_to "ACCESSORIES", welcome_products_accessories_path %></li>
+	        </ul></center>
+	</nav><hr>
+</header>
+
+<style type="text/css">
+	.search-btn {
+		background-color: transparent;
+		border: transparent;
+	}
+
+	@media only screen and (max-width: 640px) {
+	  .right-links, .header-user, #home-link {
+	  	display: none;
+	  }
+	}
+</style>

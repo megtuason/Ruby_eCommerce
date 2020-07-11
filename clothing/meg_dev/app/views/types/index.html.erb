@@ -1,0 +1,68 @@
+<title>Types</title>
+<h1 style="padding-left: 2em;">Types</h1>
+
+<center>
+	<%= link_to 'Back to Products', products_path, class:'btn' %><br><br><br>
+	<table id="table">
+	<thead>
+		<tr>
+			<th>Product ID</th>
+			<th>Product Name</th>
+			<th>Type ID</th>
+			<th>Color</th>
+			<th>Size</th>
+			<th>Quantity</th>
+			<th>Photo</th>
+			<th colspan="4" style="width: 20%;">
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @types.each do |type| %>
+			<tr>
+				<td><%= type.product_id%></td>
+				<% @products.each do |prod|%>
+					<% if prod.product_id == type.product_id %>
+						<td><%=prod.product_name%></td>
+						<td><%= type.type_id %></td>
+						<td><%= type.type_color %></td>
+						<td><%= type.type_size %></td>
+						<td><%= type.type_quantity %></td>
+						<td><%= image_tag type.image, :size => '100x100' if type.image.attached?%></td> 
+						<td><%= link_to "Show Product", product_path(prod) %></td>
+						<td> <%= link_to 'Show Type', type_path(type) %></td>
+						<td><%= link_to 'Edit', edit_type_path(type) %></td>
+						<td><%= link_to 'Delete', type, method: :delete, data: {confirm: 'Are you sure?' } %></td>
+					<% end %>
+				<% end %>
+			</tr>
+		<% end %>
+	</tbody>
+</table><br><br></center>
+
+<style type="text/css">
+	.btn {
+    	border: none;
+    	padding: 1em;
+    	border-radius: 10px;
+    	background-color: dimgrey;
+    	color: white;
+    	text-decoration: none;
+  	}
+
+  	.btn:hover {
+  		color: white;
+    	box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    	background-color: grey;
+  	}
+
+  	a {
+  		text-decoration: underline;
+  		color: #465e5e;
+  	}
+
+  	a:hover {
+  		color: #7aa4a4;
+  	}
+
+</style>

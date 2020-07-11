@@ -1,0 +1,45 @@
+<% if admin_logged_in? %>
+	<div class="nav-admin">
+		<%= link_to "Home", root_path, class: 'user-home admin', id: 'link-left' %>
+		<%= link_to "Products", products_path, class: 'admin', id: 'link-left' %>
+		<%= link_to "Tags",tags_path, class: 'admin', id: 'link-left' %>
+		<%= link_to "Orders",orders_path, class: 'admin', id: 'link-left' %>
+		<%= link_to "Logout",logout_path, method: :delete, class: 'admin', id: 'link-right' %>
+		<label class='admin', id='link-label'>Logged in as <strong><%= current_user.email %></strong>.</label>	
+	</div>	
+<!-- 	<footer>
+		<center><b>© 2019 Meg Clothing. All Rights Reserved.</b></center>
+	</footer> -->
+<style type="text/css">
+	.admin {
+		text-decoration: none;
+		color: black;
+		font-size: 10px;
+		padding: 0.8em;
+	}
+
+	#link-left {
+		float: left;
+		padding-left: 3em;
+	}
+
+	#link-right {
+		float: right;
+		padding-right: 3em;
+	}
+
+	#link-label {
+		float: right;
+	}
+
+	.admin:hover {
+		text-decoration: underline;
+		color: black;
+	}
+
+	#link-label:hover {
+		text-decoration: none;
+	}
+</style>
+<% end %>
+

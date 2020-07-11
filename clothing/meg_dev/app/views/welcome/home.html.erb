@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Meg* Clothing</title>
+</head>
+
+<main id="homepage">
+	<center>
+		<header class="mob-logo">
+			<img src="http://i65.tinypic.com/egaijn.png" style="transform: scale(0.6)"></img>
+		<hr></header>
+		<div class="slideshow">
+			<div class="slide-wrapper slide">
+		        <img class="slider" src="/images/1.png" />
+		        <img class="slider" src="/images/2.png" />
+		        <img class="slider" src="/images/3.png" />
+		        <img class="slider" src="/images/4.png" />
+		    </div>
+    	</div><hr style="margin-top: -5px;">
+    	<h1>Color your life with Meg* Clothing.</h1>
+    	<div class="wrapper">
+	    	<div class="column">
+	    		<p>Know more about the brand, its roots and its goals.</p><br>
+	    		<%= link_to 'About', welcome_about_path, class:'btn' %>
+	    	</div>
+	    	<div class="column">
+	    		<p>For inquiries and contact information, click here.</p><br>
+	    		<%= link_to 'Contact', welcome_contact_path, class:'btn' %>
+	    	</div>
+	    	<div class="column">
+	    		<p>Check out Meg's latest products and trendy fashion pieces.</p><br>
+	    		<%= link_to 'View Products', welcome_products_path, class:'btn' %>
+	    	</div>
+	    </div>
+    </center>
+</main>
+
+<style type="text/css">
+	html { box-sizing: border-box; }
+	*, *:before, *:after { box-sizing: inherit; }
+
+	.mob-logo {
+		display: none;
+	}
+
+	p {
+		font-size: 13px;
+	}
+
+	h1 {
+		font-size: 25px;
+	}
+	footer {
+		height: 35px;
+		position: absolute;
+		bottom: 0;
+	}
+
+	.btn {
+		background-color: #6D9393;
+	}
+
+	.column {
+		width: 270px;
+		height: 150px;
+		float: left;
+	}
+	
+	.wrapper {
+		transform: translateX(14%);
+	}
+
+	.slideshow {
+		transform: translateY(-1%);
+		overflow: hidden;
+		width: 100%;
+		margin: 0 auto;
+		background-color: white;
+	}
+
+	.slide-wrapper {
+		width: 4096px;
+		transition: 1s ease;
+		height: 400px;
+	}
+
+	.slide-wrapper:hover {
+		animation-play-state: paused;
+	}
+
+	.slider {
+		margin: -2px;
+		width: 1024px;
+		height: 400px;
+		display: inline-block;
+	}
+
+	.slide {
+		animation: slide 20s ease infinite;
+		animation-direction: normal;
+	}
+
+
+@keyframes slide {
+	0% {
+    	transform: translateX(12%);
+  	}
+
+  	25% {
+	  transform: translateX(-25%);
+	}
+ 
+	50% {
+	  transform: translateX(-50%);
+	}
+
+	75% {
+	  transform: translateX(-75%);
+	}
+
+	
+	100% {
+	  transform: translateX(-12%);
+	}
+}
+
+@media only screen and (max-width: 640px)
+	{
+		.mob-logo {
+			display: inline;
+		}
+
+		.column {
+			width: 90%;
+      		transform: translateX(-12%);
+      		margin: 10px;
+      		height: 100%;
+		}
+	}
+</style>

@@ -1,0 +1,54 @@
+<title>Tags</title>
+<h1>Tags</h1>
+
+<center>
+	<%= link_to 'Add New Tag', new_tag_path, class:'btn' %>
+	<%= link_to 'Show Product Tags', product_tags_path, class:'btn' %><br><br><br>
+	<table id="table" style="width: 60%;">
+	<thead>
+		<tr>
+			<th style="width: 25%;">Tag ID</th>
+			<th style="width: 35%;">Tag Name</th>
+			<th colspan="3" style="width: 40%;">
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @tags.each do |tag| %>
+			<tr>
+				<td><%= tag.tag_id %></td>
+				<td><%= tag.tag_name %></td>
+				<td> <%= link_to 'Show', tag %></td>
+				<td><%= link_to 'Edit', edit_tag_path(tag) %></td>
+				<td><%= link_to 'Delete', tag, method: :delete, data: {confirm: 'Are you sure?' } %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table><br><br></center>
+
+<style type="text/css">
+	.btn {
+    	border: none;
+    	padding: 1em;
+    	border-radius: 10px;
+    	background-color: dimgrey;
+    	color: white;
+    	text-decoration: none;
+  	}
+
+  	.btn:hover {
+  		color: white;
+    	box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    	background-color: grey;
+  	}
+
+  	a {
+  		text-decoration: underline;
+  		color: #465e5e;
+  	}
+
+  	a:hover {
+  		color: #7aa4a4;
+  	}
+
+</style>

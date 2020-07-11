@@ -1,0 +1,55 @@
+<title>Orders</title>
+<h1>Orders</h1>
+
+<center>
+	<%= link_to 'Add New Order', new_order_path, class:'btn' %><br><br><br>
+	<table id="table" style="width: 90%;">
+	<thead>
+		<tr>
+			<th>Order ID</th>
+			<th>Customer Name</th>
+			<th>Customer Address</th>
+			<th>Contact Number</th>
+			<th>Email</th>
+			<th>Date Entered</th>
+			<th>Shipping Fee</th>
+			<th>Total Amount</th>
+			<th>Payment Method</th>
+			<th>Order Status</th>
+			<th colspan="2" style="width: 15%;">
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @orders.each do |order| %>
+			<tr>
+				<td><%= order.order_id %></td>
+				<td><%= order.customer_name %></td>
+				<td><%= order.customer_address order.street order.city order.province order.zip %></td>
+				<td><%= order.email %></td>
+				<td><%= order.date_entered %></td>
+				<td><%= order.shipping_fee %></td>
+				<td><%= order.total_amount%></td>
+				<td><%= order.payment_method%></td>
+				<td><%= order.order_status%></td>
+				<td><%= link_to 'Show', order_path(order) %></td>
+				<td><%= link_to 'Edit', edit_order_path(order) %></td>
+				<td><%= link_to 'Add Tag', new_order_tag_path(order) %></td>
+				<td><%= link_to 'Delete', order, method: :delete, data: {confirm: 'Are you sure?' } %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table><br><br><center>
+
+
+<style type="text/css">
+  	a {
+  		text-decoration: underline;
+  		color: #465e5e;
+  	}
+
+  	a:hover {
+  		color: #7aa4a4;
+  	}
+
+</style>

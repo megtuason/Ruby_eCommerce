@@ -1,0 +1,53 @@
+<%= form_with(model: product, local: true) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<center>
+  <table id="table" style="width: 50%;">
+    <tr>
+      <th>Product name</th>
+      <td><%= form.text_field :product_name, maxlength:"30", class:'input-forms' %></td>
+    </tr>
+    <tr>
+      <th>Product category</th>
+      <td><%= form.select :product_category, ['Top', 'Bottom', 'Dress', 'Accessory'] %></td>
+    </tr>
+    <tr>
+      <th>Product price</th>
+      <td><%= form.number_field :product_price, min: "0", max: "999999.99", step:".01", class:'input-quantity' %></td>
+    </tr>
+    <tr>
+      <th>Total quantity</th>
+      <td><% form.number_field :total_quantity, :value => "0", class:'input-quantity' %></td>
+    </tr>
+    <tr>
+      <th></th>
+      <td><%= form.submit class:'btn' %><%= link_to 'Back', products_path, class:'btn'%></td>
+    </tr>
+  </table>
+</center><% end %>
+
+<style type="text/css">
+  th {
+    width: 35%;
+  }
+
+  a {
+    text-decoration: underline;
+    color: #465e5e;
+  }
+
+  a:hover {
+    color: #7aa4a4;
+  }
+
+</style>

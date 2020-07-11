@@ -1,0 +1,51 @@
+<title>Product Tags</title>
+<h1>Product Tags</h1>
+
+
+<center>
+	<%= link_to 'Add New Product Tag', products_path, class:'btn' %><%= link_to 'Back', products_path, class:'btn' %><br><br><br>
+	<table id="table">
+	<thead>
+		<tr>
+			<th>Product ID</th>
+			<th>Product Name</th>
+			<th>Tag ID</th>
+			<th>Tag Name</th>
+			<th colspan="4" style="width: 30%;">
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @product_tags.each do |prodtag| %>
+			<tr>
+				<td><%= prodtag.product_id %></td>
+				<% @products.each do |prod| %>
+					<% if prod.product_id == prodtag.product_id %>
+						<td><%= prod.product_name %></td>
+					<% end %>
+				<% end %>
+				<td><%= prodtag.tag_id%></td>
+				<% @tags.each do |tag| %>
+					<% if tag.tag_id == prodtag.tag_id %>
+						<td><%= tag.tag_name %></td>
+					<% end %>
+				<% end %>
+				<td><%= link_to 'Show', product_tag_path(prodtag) %></td>
+				<td><%= link_to 'Delete', prodtag, method: :delete, data: {confirm: 'Are you sure?' } %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table><br><br>
+
+
+  <style type="text/css">
+  	a {
+  		text-decoration: underline;
+  		color: #465e5e;
+  	}
+
+  	a:hover {
+  		color: #7aa4a4;
+  	}
+
+</style>

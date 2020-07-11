@@ -1,0 +1,36 @@
+<title>Show Product Tag</title>
+<h1>Show Selected Product Tag</h1>
+
+<center>
+	<table id="table" style="width: 30%;">
+		<tr>
+			<th>Product ID</th>
+			<td><%= @product_tag.product_id %></td>
+		</tr>
+		<% @products.each do |prod| %>
+			<% if prod.product_id == @product_tag.product_id %>
+		<tr>
+			<th>Product Name</th>
+			<td><%= prod.product_name %></td>
+			<% end %>
+		<% end %>
+		</tr>
+		<tr>
+			<th>Tag ID</th>
+			<td><%= @product_tag.tag_id %></td>
+		</tr>
+		<% @tags.each do |tag| %>
+			<% if tag.tag_id == @product_tag.tag_id %>	
+		<tr>
+			<th>Tag Name</th>
+			<td><%= tag.tag_name %></td>
+			<% end %>
+		<% end %>
+		</tr>
+		<tr style="height: 60px">
+			<th></th>
+			<td><%= link_to 'Back', product_tags_path, class:'btn' %></td>
+		</tr>
+	</table>
+</center>
+ 

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Products</title>
+</head>
+<h1>Products | Bottoms</h1>
+<body>
+	<center>
+		<nav class="st-category">
+			<ul>
+	          	<li><%= link_to "TOPS", welcome_products_tops_path %></li>
+	          	<li><%= link_to "BOTTOMS", welcome_products_bottoms_path %></li>
+	          	<li><%= link_to "DRESSES", welcome_products_dresses_path %></li>
+	          	<li><%= link_to "ACCESSORIES", welcome_products_accessories_path %></li>
+	        </ul>
+		</nav>
+		<div class = "products-container">
+		<% @products.each do |prod| %>
+			<% if prod.product_category == "Bottom" %>
+				<% @types.each do |type| %>
+					<% if type.product_id == prod.product_id %>
+						<%= link_to welcome_show_path(type), :action => 'go' do %>
+							<div class = "product"><%= image_tag type.image, class:'show-image', :size => '150x150' if type.image.attached?%>
+								<h2><%= prod.product_name %></h2>
+								<p>Php <%= prod.product_price %></p>
+							</div>
+						<% end %>
+					<% end %>
+				<% end %>
+			<% end %>
+		<% end %>
+	</div></center>
+</body>
+</html>
+
+<style type="text/css">
+	h2 {
+		text-transform: uppercase;
+		color: teal;
+		line-height: 10px;
+		letter-spacing: 2px;
+	}
+
+	p {
+		line-height: 0px;
+		color: dimgrey;
+	}
+</style>
