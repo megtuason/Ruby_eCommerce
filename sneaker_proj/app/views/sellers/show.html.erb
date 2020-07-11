@@ -1,0 +1,38 @@
+<p class="sign" id="notice"><%= notice %></p>
+
+<p class="sign">
+  <strong class="text">Email:</strong>
+  <%= @seller.email %>
+</p>
+
+<p class="sign">
+  <strong class="text">Password:</strong>
+  <%= @seller.password_digest %>
+</p>
+
+<p class="sign">
+  <strong class="text">First name:</strong>
+  <%= @seller.first_name %>
+</p>
+
+<p class="sign"> 
+  <strong class="text">Last name:</strong>
+  <%= @seller.last_name %>
+</p>
+
+<p class="sign">
+  <strong class="text">Sex:</strong>
+  <%= @seller.sex %>
+</p>
+
+<p class="sign">
+  <strong class="text">Birthday:</strong>
+  <%= @seller.birthday %>
+</p>
+<% if (seller_logged_in? || buyer_logged_in?) && current_user.admin?%>
+<div class="sign">
+  <%= link_to 'Edit', edit_seller_path(@seller), class:'button2' %> 
+<%= link_to 'Back', sellers_path, class:'button2' %>
+</div>
+<% end %>
+

@@ -1,0 +1,13 @@
+<div class="sign">
+	<h1 class="head">New Buyer</h1>
+</div>
+
+<img class="edit" src="/new/airmax.jpg">
+<%= render 'form', buyer: @buyer %>
+<% if (seller_logged_in? && current_user.admin?) || (buyer_logged_in? && current_user.admin?) %>
+<br>
+<div class="sign">
+	<%= link_to 'Back', buyers_path, class:'button2' %>
+</div>
+
+<%end%>

@@ -1,0 +1,65 @@
+
+<%= form_with(model: product, local: true, html: {multipart:true}) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="sign">
+  <h2 class="text">Product Categories:</h2>
+</div>
+  <table class="table">
+  <thead class="th2">
+    <tr>
+      <th>ID</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if !@categories.nil? %>
+  <% @categories.each do |cat|%>
+  <div>
+    <tr>
+      <td class="td"><%= cat.id%></td>
+      <td class="td"><%= cat.name%></td>
+    </tr>
+  </div>
+  <%end%>
+  </tbody>
+</table>
+  <br>
+  
+  <div class="sign">
+    <%= form.label :name, class:'text' %>
+    <%= form.text_field :name %>
+  </div>
+<br>
+  <div class="sign">
+    <%= form.label :description, class:'text' %>
+    <%= form.text_area :description %>
+  </div>
+<br>
+  <div class="sign">
+    <%= form.label :category_id, class:'text' %>
+    <%= form.number_field :category_id, max: @categories.count, min: 1%>
+  </div>
+<br>
+  <div class="sign">
+    <%= form.file_field :avatar %>
+  </div>
+<br>
+  <div class="sign">
+    <%= form.submit %>
+  </div>
+    <% else %>
+  <p> admin must make categories first </p>
+    <% end %>
+
+<% end %>

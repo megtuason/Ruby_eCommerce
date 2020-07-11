@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="head" style="text-align: center;">Buyers</h1>
+
+
+<table class="table">
+  <thead class="th2">
+    <tr>
+      <th>Email</th>
+      <th>Password</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Sex</th>
+      <th>Birthday</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @buyers.each do |buyer| %>
+      <tr>
+        <td class="td"><%= buyer.email %></td>
+        <td class="td"><%= buyer.password_digest %></td>
+        <td class="td"><%= buyer.first_name %></td>
+        <td class="td"><%= buyer.last_name %></td>
+        <td class="td"><%= buyer.sex %></td>
+        <td class="td"><%= buyer.birthday %></td>
+        <td class="td"><%= link_to 'Show', buyer %></td>
+        <td class="td"><%= link_to 'Edit', edit_buyer_path(buyer) %></td>
+        <td class="td"><%= link_to 'Destroy', buyer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<br>
+<div style="text-align: center;">
+  <%= link_to 'New Buyer', new_buyer_path, class:'button2' %>
+</div>
+

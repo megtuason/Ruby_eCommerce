@@ -1,0 +1,52 @@
+<%= form_with(model: seller, local: true) do |form| %>
+  <% if seller.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(seller.errors.count, "error") %> prohibited this seller from being saved:</h2>
+
+      <ul>
+      <% seller.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="sign">
+    <%= form.label :email, class:'text' %>
+    <%= form.text_field :email %>
+  </div>
+  <br>
+  <div class="sign">
+    <%= form.label :password, class:'text' %>
+    <%= form.password_field :password%>
+  </div>
+  <br>
+
+  <div class="sign">
+    <%= form.label :first_name, class:'text' %>
+    <%= form.text_field :first_name %>
+  </div>
+  <br>
+
+  <div class="sign">
+    <%= form.label :last_name, class:'text' %>
+    <%= form.text_field :last_name %>
+  </div>
+  <br>
+
+  <div class="sign">
+    <%= form.label :sex, class:'text' %>
+    <%= form.select :sex, ['Male', 'Female'] %>
+  </div>
+  <br>
+
+  <div class="sign">
+    <%= form.label :birthday, class:'text' %>
+    <%= form.date_select :birthday %>
+  </div>
+  <br>
+
+  <div class="sign">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,63 @@
+
+<div class="imgbar"> 
+    <img class="logo" src="/logo/MIS21_logo.png">
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="navbar1" class="navbar2" class="navbar3"> 
+    <% if buyer_logged_in? && current_user.admin? %>
+        <h2 class="navhead" style="text-align: center;">Administrator Page</h2>
+        <ul style="text-align: center;">
+            <%= link_to "Home", root_path,class:'button'%>
+            <%= link_to "About", welcome_about_path, class:'button'%>
+            <%= link_to "Categories", categories_path,class:'button'%>
+            <%= link_to "Products", products_path,class:'button'%>
+            <%= link_to "Sales", sales_path,class:'button'%>
+            <%= link_to "Buyers", buyers_path,class:'button'%>
+            <%= link_to "Sellers", sellers_path,class:'button'%>
+            <%= link_to "Log Out", logout_path, method: :delete,class:'button' %>
+        </ul>
+    <% elsif buyer_logged_in? %>
+        <h2 class="navhead" style="text-align: center;">Hello Buyer, <%= current_user.first_name%>!</h2>
+        <ul style="text-align: center;">
+            <%= link_to "Home", root_path, class:'button'%>
+            <%= link_to "About", welcome_about_path, class:'button'%>
+            <%= link_to "My Purchases", mypurchases_path, class:'button'%>
+            <%= link_to "Log Out", logout_path, method: :delete, class:'button' %>
+        </ul>
+    <% elsif seller_logged_in? && current_user.admin? %>
+        <h2 class="navhead" style="text-align: center;">Administrator Page</h2>
+        <ul style="text-align: center;">
+            <%= link_to "Home", root_path, class:'button'%>
+            <%= link_to "About", welcome_about_path, class:'button'%>
+            <%= link_to "Categories", categories_path, class:'button'%>
+            <%= link_to "Products", products_path, class:'button'%>
+            <%= link_to "Sales", sales_path, class:'button'%>
+            <%= link_to "Buyers", buyers_path, class:'button'%>
+            <%= link_to "Sellers", sellers_path, class:'button'%>
+            <%= link_to "Log Out", logout_path, method: :delete, class:'button' %>
+        </ul>
+    <% elsif seller_logged_in? %>
+        <h2 class="navhead" style="text-align: center;">Hello Seller, <%= current_user.first_name%>!</h2>
+        <ul style="text-align: center;">
+            <%= link_to "Home", root_path , class:'button'%>
+            <%= link_to "About", welcome_about_path, class:'button'%>
+            <%= link_to "Products", products_path, class:'button'%>
+            <%= link_to "My Products", myproducts_path, class:'button'%>
+            <%= link_to "Sales", sales_path, class:'button'%>
+            <%= link_to "Log Out", logout_path, method: :delete, class:'button' %>
+        </ul>
+    <% else %>
+        <ul style="text-align: center;">
+            <%= link_to "Home", root_path, class:'button'%>
+            <%= link_to "About", welcome_about_path, class:'button'%>
+            <%= link_to "Register", welcome_register_path, class:'button'%>
+            <%= link_to "Login", login_path, class:'button'%>
+        </ul>
+    <% end %>
+</div>

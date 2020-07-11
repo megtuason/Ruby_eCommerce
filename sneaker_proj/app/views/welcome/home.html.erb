@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Homepage</title>
+</head>
+<body class="homebg">
+<h1></h1>
+<div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+    </div>
+<div class="fling-minislide" class="center">
+  <img src="/slide/shoes4.jpg" alt="Slide 4" />
+  <img src="/slide/shoes3.jpg" alt="Slide 3" />
+  <img src="/slide/shoes2.jpg" alt="Slide 2" />
+  <img src="/slide/shoes1.jpg" alt="Slide 1" />
+</div>
+<br>
+<table class="table">
+  <thead>
+    <tr class="th">
+      <th>Seller</th>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Remarks</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody class="td">
+      <% @sales.each do |sale| %>
+      <tr class="tr">
+      	<% if sale.buyer_id.nil?%>
+	        <td class="td"><%= sale.seller.first_name %></td>
+	        <td class="td"><%= sale.product.name %></td>
+	        <td class="td"><%= sale.price %></td>
+	        <td class="td"><%= sale.remarks %></td>
+          <td class = "td"><%= image_tag sale.product.avatar.url(:medium)%></td>
+	        <td class="td"><%= link_to 'Show', sale %></td>
+	        <% if buyer_logged_in? %>
+	        <td class="td"><%= link_to "Buy", {:controller => "sales", :action => "edit", :id => sale.id }%></td>
+	        <%end%>
+	    <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<p class = "sign">
+  <strong class="text">Name:</strong>
+  <%= @category.name %>
+</p>
+
+<div class ="sign">
+	<%= link_to 'Edit', edit_category_path(@category), class:'button2' %> 
+	<%= link_to 'Back', categories_path, class:'button2' %>
+</div>

@@ -1,0 +1,75 @@
+<%= form_with(model: sale, local: true) do |form| %>
+  <% if sale.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sale.errors.count, "error") %> prohibited this sale from being saved:</h2>
+
+      <ul>
+      <% sale.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="sign">
+   <h2 class="text">Product IDs:</h2>
+</div>
+ 
+  <table class="table">
+  <thead class="th2">
+    <tr>
+      <th>ID</th>
+      <th>Product</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th>Image</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |pro|%>
+    <div>
+      <tr>
+        <td class="td"><%= pro.id%></td>
+        <td class="td"><%= pro.name%></td>
+        <td class="td"><%= pro.description%></td>
+        <td class="td"><%= pro.category.name%></td>
+        <td class = "td"><%= image_tag pro.avatar.url(:medium)%></td>
+      </tr>
+    </div>
+  <% end %>
+  </tbody>
+</table>
+  <br>
+
+<!--   hides seller id and sets automatically -->
+  <div class="sign">
+    <% form.label :seller_id, class:'text' %>
+    <% form.number_field :seller_id, :value => current_user.id %>
+  </div>
+<br>
+  <div class="sign">
+    <% form.label :buyer_id, class:'text'%>
+    <% form.number_field :buyer_id, :value => current_user.id %>
+  </div>
+<br>
+  <div class="sign">
+      <%= form.label :product_id, class:'text'%>
+      <%= form.number_field :product_id, max: @products.count, min:1, :readonly => "readonly" %>
+  </div>
+<br>
+  <div class="sign">
+    <%= form.label :price, class:'text' %>
+    <%= form.text_field :price, :readonly => "readonly" %>
+  </div>
+<br>
+  <div class="sign">
+    <%= form.label :remarks, class:'text' %>
+    <%= form.text_area :remarks, :readonly => "readonly" %>
+  </div>
+<br>
+  <div class="sign">
+    <%= form.submit :BUY%>
+  </div>
+
+<% end %>
+

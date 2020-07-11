@@ -1,0 +1,53 @@
+<p class="sign" id="notice"><%= notice %></p>
+<img class="edit" src="/edit/edit.jpg">
+<br>
+<br>
+
+<p class="sign">
+  <strong class="text">Seller:</strong>
+  <%= @sale.seller.first_name %>
+  <%= @sale.seller.last_name %>
+</p>
+<p class="sign">
+  <strong class="text">Buyer:</strong>
+  <% if !@sale.buyer_id.nil?%>
+    <%= @sale.buyer.first_name %>
+    <%= @sale.buyer.last_name %>
+  <% else %>
+    no buyer
+  <%end%>
+</p>
+  
+
+<p class="sign">
+  <strong class="text">Product:</strong>
+  <%= @sale.product.name %>
+</p>
+
+<p class="sign">
+  <strong class="text">Price:</strong>
+  <%= @sale.price %>
+</p>
+
+<p class="sign">
+  <strong class="text">Remarks:</strong>
+  <%= @sale.remarks %>
+</p>
+
+<p class = "sign">
+  <strong class = "text">Image:</strong>
+  <%= image_tag @sale.product.avatar.url(:medium)%>
+</p>
+
+<% if !buyer_logged_in? %>
+<br>
+<div class="sign">
+  <%= link_to 'Edit', edit_sale_path(@sale), class:'button2' %> 
+<%= link_to 'Back', sales_path, class:'button2' %>
+</div>
+<% else%>
+<div class="sign">
+      <%= link_to 'Back', mypurchases_path, class:'button2'  %>
+</div>
+
+<% end %>

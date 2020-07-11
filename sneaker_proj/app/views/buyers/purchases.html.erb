@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Purchases</title>
+</head>
+<h1 class="head" style="text-align: center;">My Purchases</h1>
+<body>
+	
+
+		<table class="table">
+  			<thead class="th2">
+  				<tr>
+  					<th>Seller</th>
+				    <th>Buyer</th>
+				    <th>Product</th>
+				    <th>Price</th>
+				    <th>Remarks</th>
+				    <th colspan="3"></th>
+				</tr>
+			</thead>
+
+			<tbody >  
+<% @sales.each do |sale| %>
+<% if buyer_logged_in? && (current_user == sale.buyer) %>
+				<tr class="td">
+				    <td class="td"><%= sale.seller.first_name %> <%= sale.seller.last_name %></td>
+					<% if !sale.buyer.nil?%>
+					   	<td class="td"><%= sale.buyer.first_name %> <%= sale.buyer.last_name %></td>
+					<% else %>
+					    <td class="td">no buyer</td>
+					<%end%>
+					<td class="td"><%= sale.product.name %></td>
+					<td class="td"><%= sale.price %></td>
+					<td class="td"><%= sale.remarks %></td>
+					<td class="td"><%= link_to 'Show', sale %></td>
+				</tr>
+				<% end %>
+	<%end%>
+  			</tbody>
+  		</table>
+		
+</body>
+</html>

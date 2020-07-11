@@ -1,0 +1,30 @@
+<p class="sign" id="notice"><%= notice %></p>
+
+<img class="edit" src="/new/kd.jpg">
+<br>
+<br>
+<p class="sign">
+  <strong class="text">Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p class="sign">
+  <strong class="text">Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p class="sign">
+  <strong class="text">Category:</strong>
+  <%= @product.category.name %>
+</p>
+
+<p class = "sign">
+	<strong class = "text">Image:</strong>
+	<%= image_tag @product.avatar.url(:medium) %>
+</p>
+
+<div class="sign">
+	<%= link_to 'Edit', edit_product_path(@product), class:'button2' %> 
+<%= link_to 'Back', products_path, class:'button2' %>
+</div>
+

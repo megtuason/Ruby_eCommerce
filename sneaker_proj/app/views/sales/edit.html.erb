@@ -1,0 +1,24 @@
+<div class="sign">
+	<h1 class="head">Editing Sale</h1>
+</div>
+
+<% if seller_logged_in? && (current_user == @sale.seller) && !@sale.buyer_id.nil? %>
+	<p>You cannot edit a sale that has already been purchased.</p>
+<% elsif seller_logged_in? && (current_user == @sale.seller) %>
+	<%= render 'form', sale: @sale %>
+<% elsif buyer_logged_in? && @sale.buyer_id.nil?%>
+	<%= render 'formtwo', sale: @sale %>
+<% elsif buyer_logged_in? && !@sale.buyer_id.nil?%>
+	<p class="text" style="text-align: center;">This item is no longer for sale.</p>
+<% else %>
+	<p class="text" style="text-align: center;">You can only edit your own sales!</p>
+<% end %>
+
+<% if !buyer_logged_in? %>
+<br>
+<div class="sign">
+	<%= link_to 'Show', @sale, class:'button2' %> 
+<%= link_to 'Back', sales_path, class:'button2' %>
+</div>
+
+<% end %>

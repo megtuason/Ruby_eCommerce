@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="head" style="text-align: center;">Products</h1>
+
+<table class="table">
+  <thead class="th2" style="text-align: center;">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th>Image</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td class="td"><%= product.name %></td>
+        <td class="td"><%= product.description %></td>
+        <td class="td"><%= product.category.name %></td>
+        <td class = "td"><%= image_tag product.avatar.url(:medium) %></td>
+        <td class="td"><%= link_to 'Show', product %></td>
+        <% if current_user.admin?%>
+        <td class="td"><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td class="td"><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<div style="text-align: center;">
+  <%= link_to 'New Product', new_product_path, class:'button2' %>
+</div>
